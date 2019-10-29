@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">CarManagement</string>
+    <string name="title_home">일일 정비 차량</string>
+    <string name="title_search">차량 검색</string>
+
+    <!-- main activity -->
+    <string name="main_bottomBar_home">홈</string>
+    <string name="main_bottomBar_search">검색</string>
+
+    <!-- 고객 차량 추가 string -->
+    <string name="add_company">회사명</string>
+    <string name="add_company_hint">회사명을 입력하세요</string>
+    <string name="add_customerPhoneNumber">고객 전화번호</string>
+    <string name="add_customerPhoneNumber_hint">고객 전화번호를 입력하세요</string>
+    <string name="add_carNumber">차량 번호</string>
+    <string name="add_carNumber_hint">차량 번호를 입력하세요</string>
+    <string name="add_carType">차종</string>
+    <string name="add_carType_hint">차종을 입력하세요</string>
+    <string name="add_distanceDriven">주행거리</string>
+    <string name="add_distanceDriven_hint">주행거리를 입력하세요</string>
+    <string name="add_workList">작업 사항</string>
+    <string name="add_workList_hint">작업 사항을 입력하세요</string>
+    <string name="add_etc">기타</string>
+    <string name="add_etc_hint">기타 특이사항이 있으면 입력하세요</string>
+    <string name="add_ok">확인</string>
+
+
 </resources>

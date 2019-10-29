@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/main_toolbar"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:textAlignment="center"
+        android:background="@color/colorWhite"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_home"
+            android:layout_gravity="center"
+            android:id="@+id/tv_main_toolbar_title"
+            android:textSize="15dp"
+            android:textColor="@color/colorBlack"
+            />
+
+        <ImageButton
+            android:id="@+id/ib_main_toolbar_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/default_icon" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+
+    <FrameLayout
+        android:id="@+id/fl_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/main_toolbar"
+        android:layout_above="@+id/mainBottomBar">
+
+    </FrameLayout>
+
+    <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
+        android:id="@+id/mainBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:elevation="4dp"
+        android:padding="12dp"
+        android:layout_alignParentBottom="true"
+        app:bnc_mode="spread">
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/bottomBar_item_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_active="true"
+            app:bt_colorActive="@color/colorCustome_blue"
+            app:bt_colorInactive="@color/colorBlack"
+            app:bt_icon="@drawable/ic_x_24"
+            app:bt_shape="@drawable/black_round_rectangle"
+            app:bt_title="@string/main_bottomBar_home"
+            />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/bottomBar_item_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_active="true"
+            app:bt_colorActive="@color/colorCustome_blue"
+            app:bt_colorInactive="@color/colorBlack"
+            app:bt_icon="@drawable/ic_x_24"
+            app:bt_shape="@drawable/black_round_rectangle"
+            app:bt_title="@string/main_bottomBar_search"
+            />
+
+        <!-- Add more child items here - max upto 5 -->
+
+    </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
+
+
+
+
+
+</RelativeLayout>
