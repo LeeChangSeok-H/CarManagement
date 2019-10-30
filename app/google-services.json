@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "28247320206",
+    "firebase_url": "https://carmanagement-79b82.firebaseio.com",
+    "project_id": "carmanagement-79b82",
+    "storage_bucket": "carmanagement-79b82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28247320206:android:e0bb8c70f3b1dc9ab34bdf",
+        "android_client_info": {
+          "package_name": "com.happylife.carmanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "28247320206-rmsll3hre587r0hmpjcm1ttvrmdtpppq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEP0-puhwNgX2n4QXyNFCphNhSAuFT72g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "28247320206-rmsll3hre587r0hmpjcm1ttvrmdtpppq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,6 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:id="@+id/rl_home_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_home_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/ib_home_changeDate"
+            android:layout_margin="10dp"
+            android:text="TextView"
+            android:textColor="@color/colorBlack"/>
+
+        <ImageButton
+            android:id="@+id/ib_home_changeDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/default_icon" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_carlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_home_date">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabt_add_customerCar"
         android:layout_width="wrap_content"
@@ -14,14 +47,6 @@
         android:clickable="true"
         app:srcCompat="@android:color/holo_blue_light" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_carlist"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
 
-
-        >
-
-    </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>

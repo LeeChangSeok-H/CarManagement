@@ -2,12 +2,23 @@
     <string name="app_name">CarManagement</string>
     <string name="title_home">일일 정비 차량</string>
     <string name="title_search">차량 검색</string>
+    <string name="title_addCar">정비 차량 추가</string>
 
     <!-- main activity -->
     <string name="main_bottomBar_home">홈</string>
     <string name="main_bottomBar_search">검색</string>
 
+    <!-- item_rv_home -->
+    <string name="item_rv_home_compayName">회사명 :</string>
+    <string name="item_rv_home_customerPhoneNumber">고객 전화번호 :</string>
+    <string name="item_rv_home_carType">차종 :</string>
+    <string name="item_rv_home_drivenDistance">주행거리 :</string>
+
     <!-- 고객 차량 추가 string -->
+    <string name="add_date">날짜 : </string>
+    <string name="add_changeDate">날짜 변경</string>
+    <string name="add_time">시간 : </string>
+    <string name="add_changeTime">시간 변경</string>
     <string name="add_company">회사명</string>
     <string name="add_company_hint">회사명을 입력하세요</string>
     <string name="add_customerPhoneNumber">고객 전화번호</string>
