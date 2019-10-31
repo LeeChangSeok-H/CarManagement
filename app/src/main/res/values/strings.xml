@@ -8,6 +8,9 @@
     <string name="main_bottomBar_home">홈</string>
     <string name="main_bottomBar_search">검색</string>
 
+    <!-- home fragment -->
+    <string name="home_noData_info">해당 날짜에 등록된 차량이 없어요!</string>
+
     <!-- item_rv_home -->
     <string name="item_rv_home_compayName">회사명 :</string>
     <string name="item_rv_home_customerPhoneNumber">고객 전화번호 :</string>

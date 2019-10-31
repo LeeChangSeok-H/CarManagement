@@ -3,21 +3,33 @@ package com.happylife.carmanagement.home.addcar
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.ImageButton
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.happylife.carmanagement.R
 import com.happylife.carmanagement.common.BasicInfo
 import com.happylife.carmanagement.home.CarItem
 import kotlinx.android.synthetic.main.activity_addcar.*
+import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.util.*
 
 class AddCarActivity : AppCompatActivity() {
+
+    var m_tv_add_date : TextView? = null
+    var m_tv_add_time : TextView? = null
+    var m_et_add_company : EditText? = null
+    var m_et_add_customerPhoneNumber : EditText? = null
+    var m_et_add_carNumber : EditText? = null
+    var m_et_add_carType : EditText? = null
+    var m_et_add_distanceDriven : EditText? = null
+    var m_et_add_workList : EditText? = null
+    var m_et_add_etc : EditText? = null
+    var m_bt_add_ok : Button? = null
+    var m_ib_addCar_toolbar_close : ImageButton? = null
+    var m_bt_add_changeDate : Button? = null
+    var m_bt_add_changeTime : Button? = null
 
     val calendar = Calendar.getInstance()
 
@@ -31,11 +43,13 @@ class AddCarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_addcar)
 
-        bt_add_ok.setOnClickListener {
+        initView()
+
+        m_bt_add_ok?.setOnClickListener {
             addCar()
             finish()
         }
-        ib_addCar_toolbar_close.setOnClickListener { finish() }
+        m_ib_addCar_toolbar_close?.setOnClickListener { finish() }
 
         dateChangeProcess()
         timeChangeProcess()
@@ -45,18 +59,34 @@ class AddCarActivity : AppCompatActivity() {
 
     }
 
+    fun initView(){
+        m_tv_add_date = tv_add_date
+        m_tv_add_time = tv_add_time
+        m_et_add_company = et_add_company
+        m_et_add_customerPhoneNumber = et_add_customerPhoneNumber
+        m_et_add_carNumber = et_add_carNumber
+        m_et_add_carType = et_add_carType
+        m_et_add_distanceDriven = et_add_distanceDriven
+        m_et_add_workList = et_add_workList
+        m_et_add_etc = et_add_etc
+        m_bt_add_ok = bt_add_ok
+        m_ib_addCar_toolbar_close = ib_addCar_toolbar_close
+        m_bt_add_changeDate = bt_add_changeDate
+        m_bt_add_changeTime = bt_add_changeTime
+    }
+
     fun addCar(){
 
         val caritem = CarItem(
-            tv_add_date.text.toString(),
-            tv_add_time.text.toString(),
-            et_add_company.text.toString(),
-            et_add_customerPhoneNumber.text.toString(),
-            et_add_carNumber.text.toString(),
-            et_add_carType.text.toString(),
-            et_add_distanceDriven.text.toString(),
-            et_add_workList.text.toString(),
-            et_add_etc.text.toString())
+            m_tv_add_date?.text.toString(),
+            m_tv_add_time?.text.toString(),
+            m_et_add_company?.text.toString(),
+            m_et_add_customerPhoneNumber?.text.toString(),
+            m_et_add_carNumber?.text.toString(),
+            m_et_add_carType?.text.toString(),
+            m_et_add_distanceDriven?.text.toString(),
+            m_et_add_workList?.text.toString(),
+            m_et_add_etc?.text.toString())
 
         db.collection(basicInfo.db_ourStore)
             .document(basicInfo.db_customerCar)
@@ -77,7 +107,7 @@ class AddCarActivity : AppCompatActivity() {
             }
         }
 
-        bt_add_changeDate.setOnClickListener { DatePickerDialog(this,
+        m_bt_add_changeDate?.setOnClickListener { DatePickerDialog(this,
             dateSetListener,
             // set DatePickerDialog to point to today's date when it loads up
             calendar.get(Calendar.YEAR),
@@ -94,15 +124,15 @@ class AddCarActivity : AppCompatActivity() {
 
         }),calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),true)
 
-        bt_add_changeTime.setOnClickListener { tpd.show() }
+        m_bt_add_changeTime?.setOnClickListener { tpd.show() }
     }
 
     fun updateDateView(){
-        tv_add_date.text = dateFormat.format(calendar.time)
+        m_tv_add_date?.text = dateFormat.format(calendar.time)
     }
 
     fun updateTimeView(){
-        tv_add_time.text = timeFormat.format(calendar.time)
+        m_tv_add_time?.text = timeFormat.format(calendar.time)
     }
 
 }
