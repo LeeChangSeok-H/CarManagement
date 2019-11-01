@@ -22,6 +22,14 @@
         <activity android:name="com.happylife.carmanagement.home.addcar.AddCarActivity"></activity>
         <activity android:name=".search.SearchFragment"></activity>
         <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".home.modifycar.ModifyCarActivity"></activity>
+
+        <service
+            android:name=".common.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

@@ -67,7 +67,7 @@
             app:bt_colorActive="@color/colorCustome_blue"
             app:bt_colorInactive="@color/colorBlack"
             app:bt_icon="@drawable/ic_x_24"
-            app:bt_shape="@drawable/black_round_rectangle"
+            app:bt_shape="@drawable/black_round_rectangle_stroke"
             app:bt_title="@string/main_bottomBar_home"
             />
 
@@ -79,7 +79,7 @@
             app:bt_colorActive="@color/colorCustome_blue"
             app:bt_colorInactive="@color/colorBlack"
             app:bt_icon="@drawable/ic_x_24"
-            app:bt_shape="@drawable/black_round_rectangle"
+            app:bt_shape="@drawable/black_round_rectangle_stroke"
             app:bt_title="@string/main_bottomBar_search"
             />
 
