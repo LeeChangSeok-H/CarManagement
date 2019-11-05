@@ -18,6 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.happylife.carmanagement.home.addcar.AddCarActivity
 import com.happylife.carmanagement.R
 import com.happylife.carmanagement.common.BasicInfo
+import com.happylife.carmanagement.common.FirebaseDB
 import com.happylife.carmanagement.home.modifycar.ModifyCarActivity
 import kotlinx.android.synthetic.main.dialog_confirmcar.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -43,6 +44,8 @@ class HomeFragment : Fragment() {
 
     val carList = ArrayList<CarItem>()
     val carList_id = ArrayList<String>()
+
+    val firebaseDB = FirebaseDB();
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -197,8 +200,7 @@ class HomeFragment : Fragment() {
 
 
     fun deleteCar(pos: Int){
-        db.collection(basicInfo.db_ourStore).document(basicInfo.db_customerCar).collection(basicInfo.db_carInfo).document(carList_id[pos]).delete()
-
+        firebaseDB.deleteCar_fireStore(carList_id[pos])
     }
 
 

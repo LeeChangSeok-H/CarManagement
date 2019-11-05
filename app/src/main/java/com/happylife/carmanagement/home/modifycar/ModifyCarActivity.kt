@@ -11,6 +11,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.happylife.carmanagement.R
 import com.happylife.carmanagement.common.BasicInfo
+import com.happylife.carmanagement.common.FirebaseDB
 import com.happylife.carmanagement.home.CarItem
 import kotlinx.android.synthetic.main.activity_addcar.*
 import java.text.SimpleDateFormat
@@ -34,14 +35,14 @@ class ModifyCarActivity : AppCompatActivity() {
 
     val calendar = Calendar.getInstance()
 
-    val db = FirebaseFirestore.getInstance()
-
     val basicInfo = BasicInfo()
     val dateFormat = SimpleDateFormat(basicInfo.datePattern)
     val timeFormat = SimpleDateFormat(basicInfo.timePattern)
 
     var carItem : CarItem? = null
     var carId : String? = null
+
+    val firebaseDB = FirebaseDB()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -119,10 +120,7 @@ class ModifyCarActivity : AppCompatActivity() {
             m_et_add_workList?.text.toString(),
             m_et_add_etc?.text.toString())
 
-        db.collection(basicInfo.db_ourStore)
-            .document(basicInfo.db_customerCar)
-            .collection(basicInfo.db_carInfo)
-            .document(carId!!).set(caritem, SetOptions.merge())
+        firebaseDB.modifyCar_fireStore(carId!!, caritem)
     }
 
     fun dateChangeProcess(){

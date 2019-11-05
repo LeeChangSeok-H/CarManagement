@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.happylife.carmanagement.R
 import com.happylife.carmanagement.common.BasicInfo
+import com.happylife.carmanagement.common.FirebaseDB
 import com.happylife.carmanagement.home.CarItem
 import kotlinx.android.synthetic.main.activity_addcar.*
 import org.w3c.dom.Text
@@ -33,11 +34,11 @@ class AddCarActivity : AppCompatActivity() {
 
     val calendar = Calendar.getInstance()
 
-    val db = FirebaseFirestore.getInstance()
-
     val basicInfo = BasicInfo()
     val dateFormat = SimpleDateFormat(basicInfo.datePattern)
     val timeFormat = SimpleDateFormat(basicInfo.timePattern)
+
+    val firebaseDB = FirebaseDB()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,12 +89,8 @@ class AddCarActivity : AppCompatActivity() {
             m_et_add_workList?.text.toString(),
             m_et_add_etc?.text.toString())
 
-        db.collection(basicInfo.db_ourStore)
-            .document(basicInfo.db_customerCar)
-            .collection(basicInfo.db_carInfo)
-            .add(caritem)
-            .addOnSuccessListener { documentReference -> Toast.makeText(this, "차량 추가 성공", Toast.LENGTH_LONG).show() }
-            .addOnFailureListener { e -> Toast.makeText(this, "차량 추가 실패", Toast.LENGTH_LONG).show()}
+
+        firebaseDB.addCar_fireStore(this, caritem)
     }
 
     fun dateChangeProcess(){
