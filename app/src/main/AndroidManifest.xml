@@ -23,6 +23,7 @@
         <activity android:name=".search.SearchFragment"></activity>
         <activity android:name=".SettingActivity"></activity>
         <activity android:name=".home.modifycar.ModifyCarActivity"></activity>
+        <activity android:name=".search.SearchActivity"></activity>
 
         <service
             android:name=".common.MyFirebaseMessagingService">
