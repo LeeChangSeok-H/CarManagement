@@ -50,4 +50,18 @@
     <string name="confirmCar_workList">작업 사항</string>
     <string name="confirmCar_etc">기타</string>
 
+    <!-- activity_search -->
+    <string name="search_toolbar_title">차량 검색</string>
+    <string name="search_button">검색</string>
+    <string name="search_carNumber">차량 번호</string>
+    <string name="search_phoneNumber">전화 번호</string>
+    <string name="search_pagerName_carNumber">차량 번호로 검색</string>
+    <string name="search_pagerName_phoneNumber">전화 번호로 검색</string>
+    <string name="search_nothaveContent">내용을 입력해주세요</string>
+
+    <!-- item_rv_search -->
+    <string name="item_rv_search_compayName">회사명 :</string>
+    <string name="item_rv_search_customerPhoneNumber">고객 전화번호 :</string>
+    <string name="item_rv_search_carType">차종 :</string>
+    <string name="item_rv_search_drivenDistance">주행거리 :</string>
 </resources>

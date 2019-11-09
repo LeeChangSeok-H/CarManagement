@@ -1,6 +1,5 @@
 package com.happylife.carmanagement.home
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,21 +20,7 @@ class CarRvAdapter(val carList : ArrayList<CarItem>, val itemClick: (CarItem, In
     override fun getItemCount(): Int = m_carList.size
 
     override fun onBindViewHolder(holer: MainViewHolder, position: Int) {
-
         holer.bind(m_carList[position], position)
-        /*
-        items[position].let {
-                item -> with(holer) {
-                tv_time.text = item.time
-                tv_companyName.text = item.companyName
-                tv_customerPhoneNumber.text = item.customerPhoneNumber
-                tv_carNumber.text = item.carNumber
-                tv_carType.text = item.carType
-                tv_drivenDistance.text = item.drivenDistance + " km"
-            }
-        }
-
-         */
     }
     inner class MainViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         val tv_time = itemView.tv_item_rv_home_time
@@ -55,13 +40,5 @@ class CarRvAdapter(val carList : ArrayList<CarItem>, val itemClick: (CarItem, In
 
             itemView.setOnClickListener { itemClick(carItem, position) }
         }
-
     }
-
-    fun updateRecycleViewData(carList: ArrayList<CarItem>){
-        m_carList.clear()
-        m_carList = carList
-        notifyDataSetChanged()
-    }
-    
 }

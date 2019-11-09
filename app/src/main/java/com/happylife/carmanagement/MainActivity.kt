@@ -2,14 +2,11 @@ package com.happylife.carmanagement
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.happylife.carmanagement.home.HomeFragment
-import com.happylife.carmanagement.search.SearchFragment
+import com.happylife.carmanagement.search.search_home.SearchPagerFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -52,7 +49,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 m_bottomBar_item_search -> {
                     m_tv_main_toolbar_title?.setText(R.string.title_search)
-                    supportFragmentManager.beginTransaction().replace(R.id.fl_main, SearchFragment()).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fl_main,
+                        SearchPagerFragment()
+                    ).commit()
 
                 }
             }

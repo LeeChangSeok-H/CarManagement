@@ -8,4 +8,6 @@ class BasicInfo {
     val datePattern = "yyyy - MM - dd"
     val timePattern = "HH : mm"
 
+    val INTENT_PAGERPOSITION = "pagerPosition"
+
 }

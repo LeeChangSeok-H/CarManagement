@@ -20,10 +20,10 @@
 
         <activity android:name=".home.HomeFragment"></activity>
         <activity android:name="com.happylife.carmanagement.home.addcar.AddCarActivity"></activity>
-        <activity android:name=".search.SearchFragment"></activity>
+        <activity android:name=".search.search_home.SearchPagerFragment"></activity>
         <activity android:name=".SettingActivity"></activity>
         <activity android:name=".home.modifycar.ModifyCarActivity"></activity>
-        <activity android:name=".search.SearchActivity"></activity>
+        <activity android:name=".search.search_do.SearchActivity"></activity>
 
         <service
             android:name=".common.MyFirebaseMessagingService">
