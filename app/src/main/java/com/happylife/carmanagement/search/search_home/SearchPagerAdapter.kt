@@ -35,11 +35,11 @@ class SearchPagerAdapter(val mContext: Context) : PagerAdapter() {
         val inflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val v = inflater.inflate(R.layout.fragment_search_pageritem, container, false)
 
-        val imageView = v.iv_search_pagerItem
+        //val imageView = v.iv_search_pagerItem
         val textView = v.tv_search_pagerItem
         val background = v.rl_search_viewPager
 
-        imageView.setImageResource(mItems[position].imageId)
+        //imageView.setImageResource(mItems[position].imageId)
         textView.setText(mItems[position].text)
         background.setBackgroundColor(mItems[position].color)
         container.addView(v)

@@ -23,20 +23,15 @@ class SearchRvAdapter(val carList : ArrayList<CarItem>, val itemClick: (CarItem,
         holer.bind(m_carList[position], position)
     }
     inner class SearchViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+        val tv_date = itemView.tv_item_rv_search_date
         val tv_time = itemView.tv_item_rv_search_time
-        val tv_companyName = itemView.tv_item_rv_search_companyName
-        val tv_customerPhoneNumber = itemView.tv_item_rv_search_customerPhoneNumber
         val tv_carNumber = itemView.tv_item_rv_search_carNumber
-        val tv_carType = itemView.tv_item_rv_search_carType
-        val tv_drivenDistance = itemView.tv_item_rv_search_driveDistance
+
 
         fun bind(carItem: CarItem, position: Int){
+            tv_date.text = carItem.date
             tv_time.text = carItem.time
-            tv_companyName.text = carItem.companyName
-            tv_customerPhoneNumber.text = carItem.customerPhoneNumber
             tv_carNumber.text = carItem.carNumber
-            tv_carType.text = carItem.carType
-            tv_drivenDistance.text = carItem.drivenDistance + " km"
 
             itemView.setOnClickListener { itemClick(carItem, position) }
         }

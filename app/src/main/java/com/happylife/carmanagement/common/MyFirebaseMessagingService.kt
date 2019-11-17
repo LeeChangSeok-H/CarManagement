@@ -20,9 +20,13 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
          * FirebaseInstanceIdService is deprecated.
          * this is new on firebase-messaging:17.1.0
          */
+        val firebaseDB = FirebaseDB()
+
         override fun onNewToken(token : String) {
             Log.d(TAG, "new Token: $token")
 
+            val data = hashMapOf<String, Any>( "value" to token)
+            firebaseDB.addNewToken_fireStore(data)
         }
 
         /**

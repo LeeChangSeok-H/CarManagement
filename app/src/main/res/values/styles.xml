@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:colorControlNormal">@color/colorCustome_blue</item>
+        <item name="android:colorControlActivated">@color/colorCustome_blue</item>
+    </style>
+
 </resources>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.afollestad.viewpagerdots.DotsIndicator
 import com.happylife.carmanagement.R
 import kotlinx.android.synthetic.main.fragment_search_pager.view.*
 
@@ -16,12 +17,17 @@ class SearchPagerFragment : Fragment()  {
 
     var pagerAdapter : SearchPagerAdapter? = null
 
+    var dotsIndicator : DotsIndicator? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_search_pager, null)
+
+        dotsIndicator = view.dots_vpSearch
+        dotsIndicator?.setDotTintRes(R.color.colorCustome_blue)
 
         pagerList.add(
             SearchPagerItem(

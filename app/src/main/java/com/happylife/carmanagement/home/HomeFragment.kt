@@ -1,12 +1,8 @@
 package com.happylife.carmanagement.home
 
-import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,12 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
-import com.happylife.carmanagement.home.addcar.AddCarActivity
+import com.google.firebase.firestore.Query
+import com.happylife.carmanagement.addcar.AddCarActivity
 import com.happylife.carmanagement.R
 import com.happylife.carmanagement.common.BasicInfo
+import com.happylife.carmanagement.common.BasicUtils
 import com.happylife.carmanagement.common.FirebaseDB
-import com.happylife.carmanagement.home.modifycar.ModifyCarActivity
-import kotlinx.android.synthetic.main.dialog_confirmcar.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -37,6 +33,7 @@ class HomeFragment : Fragment() {
     var m_rl_home : RelativeLayout? = null
 
     val basicInfo = BasicInfo()
+    val basicUtils = BasicUtils()
     val dateFormat = SimpleDateFormat(basicInfo.datePattern)
     val calendar = Calendar.getInstance()
 
@@ -65,10 +62,12 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-
-        getCarList()
-
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getCarList()
     }
 
     fun initView(view : View){
@@ -82,7 +81,7 @@ class HomeFragment : Fragment() {
         m_tv_home_date?.text = dateFormat.format(calendar.time)
 
         m_rv_carlist?.adapter = CarRvAdapter(carList){
-                carItem , position -> carInfoDialog(carItem, position)
+                carItem , position -> basicUtils.carInfoDialog(context!!, carItem, carList_id[position])
         }
         m_rv_carlist?.layoutManager = LinearLayoutManager(view.context)
 
@@ -109,18 +108,18 @@ class HomeFragment : Fragment() {
     fun getCarList(){
 
         m_tv_home_noData?.visibility = View.VISIBLE
+        carList.clear()
+        carList_id.clear()
+
         db.collection(basicInfo.db_ourStore)
             .document(basicInfo.db_customerCar)
             .collection(basicInfo.db_carInfo)
             .whereEqualTo("date", dateFormat.format(calendar.time))
-            .orderBy("time")
+            .orderBy("time", Query.Direction.DESCENDING)
             .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 if(firebaseFirestoreException != null){
                     return@addSnapshotListener
                 }
-
-                carList.clear()
-                carList_id.clear()
 
                 for( car in querySnapshot!!){
                     carList_id.add(car.id)
@@ -135,6 +134,7 @@ class HomeFragment : Fragment() {
             }
     }
 
+    /*
     fun carInfoDialog(carItem: CarItem, pos: Int){
         val mDialogView = LayoutInflater.from(context).inflate(R.layout.dialog_confirmcar, null)
         val mBuilder = AlertDialog.Builder(context)
@@ -163,6 +163,8 @@ class HomeFragment : Fragment() {
 
         mDialogView.bt_confirmCar_delete.setOnClickListener { carInfoDeleteDialog(mAlertDialog, pos) }
     }
+
+
 
     fun carInfoModifyDiaglog(alertDialog: AlertDialog, pos: Int){
         val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.Theme_AppCompat_Light_Dialog))
@@ -202,6 +204,6 @@ class HomeFragment : Fragment() {
     fun deleteCar(pos: Int){
         firebaseDB.deleteCar_fireStore(carList_id[pos])
     }
-
+    */
 
 }

@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <ProgressBar
+        android:id="@+id/progressBar_search"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/search_toolbar"
         app:contentInsetLeft="0dp"
@@ -21,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:background="@drawable/default_icon" />
+            android:background="@drawable/back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -63,20 +71,40 @@
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/bt_doSearch"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                app:theme="@style/EditTextStyle"/>
 
             <Button
                 android:id="@+id/bt_doSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:background="@color/colorCustome_blue"
+                android:textColor="@color/colorWhite"
                 android:text="@string/search_button" />
         </RelativeLayout>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_searchList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/ll_search"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_search">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_searchList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:id="@+id/tv_search_noData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:text="검색되는 차량이 없어요."
+            android:textSize="20dp"
+            android:textColor="@color/colorBlack" />
+
+    </RelativeLayout>
 </RelativeLayout>

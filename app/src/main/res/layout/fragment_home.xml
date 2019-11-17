@@ -27,7 +27,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_margin="10dp"
-            android:background="@drawable/default_icon" />
+            android:background="@drawable/calendar" />
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -46,7 +46,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:clickable="true"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:backgroundTint="@color/colorCustome_blue"
+        app:srcCompat="@drawable/plus" />
 
     <TextView
         android:id="@+id/tv_home_noData"

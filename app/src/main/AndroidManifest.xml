@@ -10,19 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".PasswordActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".home.HomeFragment"></activity>
-        <activity android:name="com.happylife.carmanagement.home.addcar.AddCarActivity"></activity>
+        <activity android:name="com.happylife.carmanagement.addcar.AddCarActivity"></activity>
         <activity android:name=".search.search_home.SearchPagerFragment"></activity>
         <activity android:name=".SettingActivity"></activity>
-        <activity android:name=".home.modifycar.ModifyCarActivity"></activity>
+        <activity android:name="com.happylife.carmanagement.modifycar.ModifyCarActivity"></activity>
         <activity android:name=".search.search_do.SearchActivity"></activity>
 
         <service
