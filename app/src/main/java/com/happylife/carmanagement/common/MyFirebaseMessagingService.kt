@@ -21,11 +21,12 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
          * this is new on firebase-messaging:17.1.0
          */
         val firebaseDB = FirebaseDB()
+        val basicInfo = BasicInfo()
 
         override fun onNewToken(token : String) {
             Log.d(TAG, "new Token: $token")
 
-            val data = hashMapOf<String, Any>( "value" to token)
+            val data = hashMapOf<String, Any>(basicInfo.db_tokenValue to token)
             firebaseDB.addNewToken_fireStore(data)
         }
 

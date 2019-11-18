@@ -32,12 +32,11 @@ class PasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_password)
 
-        pref = this.getSharedPreferences("carManagement", 0)
+        pref = this.getSharedPreferences(basicInfo.SHAREDPREFERENCES_NAME, 0)
         pref_editor = pref?.edit()
 
         isConfirmPassword()
         isConfirmCount()
-
 
         m_et_password_input = et_password_input
         m_bt_password_ok = bt_password_ok
@@ -48,7 +47,7 @@ class PasswordActivity : AppCompatActivity() {
     }
 
     fun isConfirmPassword(){
-        if(pref!!.getBoolean("isConfirm", false)){
+        if(pref!!.getBoolean(basicInfo.SHAREDPREFERENCES_KEY_ISCONFIRM, false)){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -56,7 +55,7 @@ class PasswordActivity : AppCompatActivity() {
     }
 
     fun isConfirmCount(){
-        count = pref!!.getInt("isFailCount", 0)
+        count = pref!!.getInt(basicInfo.SHAREDPREFERENCES_KEY_ISFAILCOUNT, 0)
         if(count == 5){
             m_bt_password_ok?.isClickable = false
         }
@@ -76,19 +75,19 @@ class PasswordActivity : AppCompatActivity() {
 
     fun cofirmPassword(){
         if(db_password == m_et_password_input?.text.toString()){
-            pref_editor!!.putBoolean("isConfirm", true).apply()
+            pref_editor!!.putBoolean(basicInfo.SHAREDPREFERENCES_KEY_ISCONFIRM, true).apply()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }else{
             count++
-            pref_editor!!.putInt("isFailCount", count)
+            pref_editor!!.putInt(basicInfo.SHAREDPREFERENCES_KEY_ISFAILCOUNT, count)
             if(count != 5){
                 Toast.makeText(this, "${count}번 틀리셨습니다. ${5-count} 남았습니다.", Toast.LENGTH_LONG).show()
             }
             if(count == 5){
                 m_bt_password_ok?.isClickable = false
-                Toast.makeText(this, "비밀번호 오류 횟수를 초과했습니다. 앱 사용이 불가해집니다.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.password_wrong_over), Toast.LENGTH_LONG).show()
             }
         }
     }

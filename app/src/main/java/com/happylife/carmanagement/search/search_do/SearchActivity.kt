@@ -92,8 +92,8 @@ class SearchActivity : AppCompatActivity() {
                     db.collection(basicInfo.db_ourStore)
                         .document(basicInfo.db_customerCar)
                         .collection(basicInfo.db_carInfo)
-                        .whereEqualTo("carNumber", m_et_search_content?.text.toString())
-                        .orderBy("date", Query.Direction.DESCENDING)
+                        .whereEqualTo(basicInfo.db_carNumber, m_et_search_content?.text.toString())
+                        .orderBy(basicInfo.db_date, Query.Direction.DESCENDING)
                         .addSnapshotListener{ querySnapshot, firebaseFirestoreException ->
                             if(firebaseFirestoreException != null){
                                 return@addSnapshotListener
@@ -109,13 +109,8 @@ class SearchActivity : AppCompatActivity() {
                                 searchList_id.add(car.id)
                                 searchList.add(car.toObject(CarItem::class.java))
                             }
-//                            if(searchList.size != 0){
-//                                m_tv_home_noData?.visibility = View.GONE
-//                            }else{
-//                                m_tv_home_noData?.visibility = View.VISIBLE
-//                            }
-                            m_rv_searchlist?.adapter!!.notifyDataSetChanged()
 
+                            m_rv_searchlist?.adapter!!.notifyDataSetChanged()
                             m_tv_search_noData?.visibility = View.GONE
                             m_progress?.visibility = View.GONE
                             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
@@ -126,8 +121,8 @@ class SearchActivity : AppCompatActivity() {
                     db.collection(basicInfo.db_ourStore)
                         .document(basicInfo.db_customerCar)
                         .collection(basicInfo.db_carInfo)
-                        .whereEqualTo("customerPhoneNumber", m_et_search_content?.text.toString())
-                        .orderBy("date", Query.Direction.DESCENDING)
+                        .whereEqualTo(basicInfo.db_customerPhoneNumber, m_et_search_content?.text.toString())
+                        .orderBy(basicInfo.db_date, Query.Direction.DESCENDING)
                         .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                             if(firebaseFirestoreException != null){
                                 return@addSnapshotListener
@@ -142,11 +137,7 @@ class SearchActivity : AppCompatActivity() {
                                 searchList_id.add(car.id)
                                 searchList.add(car.toObject(CarItem::class.java))
                             }
-//                            if(searchList.size != 0){
-//                                m_tv_home_noData?.visibility = View.GONE
-//                            }else{
-//                                m_tv_home_noData?.visibility = View.VISIBLE
-//                            }
+
                             m_rv_searchlist?.adapter!!.notifyDataSetChanged()
 
                             m_tv_search_noData?.visibility = View.GONE

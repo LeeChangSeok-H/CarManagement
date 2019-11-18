@@ -73,8 +73,8 @@ class ModifyCarActivity : AppCompatActivity() {
         m_bt_add_changeDate = bt_add_changeDate
         m_bt_add_changeTime = bt_add_changeTime
 
-        carItem = intent.getParcelableExtra<CarItem>("carItem")
-        carId = intent.getStringExtra("carId")
+        carItem = intent.getParcelableExtra<CarItem>(basicInfo.INTENT_CARITEM)
+        carId = intent.getStringExtra(basicInfo.INTENT_CARID)
 
         m_tv_add_date?.text = carItem?.date
         m_tv_add_time?.text = carItem?.time

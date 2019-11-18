@@ -42,9 +42,6 @@ class HomeFragment : Fragment() {
     val carList = ArrayList<CarItem>()
     val carList_id = ArrayList<String>()
 
-    val firebaseDB = FirebaseDB();
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -114,8 +111,8 @@ class HomeFragment : Fragment() {
         db.collection(basicInfo.db_ourStore)
             .document(basicInfo.db_customerCar)
             .collection(basicInfo.db_carInfo)
-            .whereEqualTo("date", dateFormat.format(calendar.time))
-            .orderBy("time", Query.Direction.DESCENDING)
+            .whereEqualTo(basicInfo.db_date, dateFormat.format(calendar.time))
+            .orderBy(basicInfo.db_time, Query.Direction.DESCENDING)
             .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 if(firebaseFirestoreException != null){
                     return@addSnapshotListener
@@ -133,77 +130,4 @@ class HomeFragment : Fragment() {
                 m_rv_carlist?.adapter!!.notifyDataSetChanged()
             }
     }
-
-    /*
-    fun carInfoDialog(carItem: CarItem, pos: Int){
-        val mDialogView = LayoutInflater.from(context).inflate(R.layout.dialog_confirmcar, null)
-        val mBuilder = AlertDialog.Builder(context)
-            .setView(mDialogView)
-
-        //show dialog
-        val  mAlertDialog = mBuilder.show()
-        mAlertDialog.window!!.setBackgroundDrawableResource(android.R.color.transparent)
-
-        mDialogView.tv_confirmCar_carNumber.text = carItem.carNumber
-        mDialogView.tv_confirmCar_Date_time.text = carItem.date + " " + carItem.time
-        mDialogView.tv_confirmCar_companyName.setText(carItem.companyName)
-        mDialogView.tv_confirmCar_customerPhoneNumber.setText(carItem.customerPhoneNumber)
-        mDialogView.tv_confirmCar_carType.setText(carItem.carType)
-        mDialogView.tv_confirmCar_drivenDistance.setText(carItem.drivenDistance)
-        mDialogView.tv_confirmCar_workList.setText(carItem.workList)
-        mDialogView.tv_confirmCar_etc.setText(carItem.etc)
-
-        //cancel button click of custom layout
-        mDialogView.ib_confirmCar_close.setOnClickListener {
-            //dismiss dialog
-            mAlertDialog.dismiss()
-        }
-
-        mDialogView.bt_confirmCar_modify.setOnClickListener { carInfoModifyDiaglog(mAlertDialog, pos) }
-
-        mDialogView.bt_confirmCar_delete.setOnClickListener { carInfoDeleteDialog(mAlertDialog, pos) }
-    }
-
-
-
-    fun carInfoModifyDiaglog(alertDialog: AlertDialog, pos: Int){
-        val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.Theme_AppCompat_Light_Dialog))
-        builder.setTitle("정비 내역 수정")
-        builder.setMessage("수정 페이지로 이동하시겠습니까?")
-
-        builder.setPositiveButton("확인") {dialog, id ->
-
-            val intent = Intent(context, ModifyCarActivity::class.java)
-            intent.putExtra("carItem", carList[pos])
-            intent.putExtra("carId", carList_id[pos])
-            startActivity(intent)
-
-            alertDialog.dismiss()
-
-        }
-        builder.setNegativeButton("취소") {dialog, id ->
-        }
-        builder.show()
-    }
-
-    fun carInfoDeleteDialog(alertDialog: AlertDialog, pos: Int){
-        val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.Theme_AppCompat_Light_Dialog))
-        builder.setTitle("정비 내역 삭제")
-        builder.setMessage("해당 정비 내역을 삭제하시겠습니까?")
-
-        builder.setPositiveButton("확인") {dialog, id ->
-            deleteCar(pos)
-            alertDialog.dismiss()
-        }
-        builder.setNegativeButton("취소") {dialog, id ->
-        }
-        builder.show()
-    }
-
-
-    fun deleteCar(pos: Int){
-        firebaseDB.deleteCar_fireStore(carList_id[pos])
-    }
-    */
-
 }

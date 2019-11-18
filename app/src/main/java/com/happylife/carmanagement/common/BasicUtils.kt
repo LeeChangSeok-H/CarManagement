@@ -17,6 +17,7 @@ import java.net.URL
 
 class BasicUtils {
 
+    val basicInfo = BasicInfo()
 
     public fun carInfoDialog(context: Context, carItem: CarItem, carId : String){
         val mDialogView = LayoutInflater.from(context).inflate(R.layout.dialog_confirmcar, null)
@@ -44,75 +45,41 @@ class BasicUtils {
 
         mDialogView.bt_confirmCar_modify.setOnClickListener { carInfoModifyDiaglog(context, mAlertDialog, carItem, carId) }
 
-        mDialogView.bt_confirmCar_delete.setOnClickListener { carInfoDeleteDialog(context, mAlertDialog, carId) }
+        mDialogView.bt_confirmCar_delete.setOnClickListener { carInfoDeleteDialog(context, mAlertDialog, carItem, carId) }
     }
 
     fun carInfoModifyDiaglog(context: Context, alertDialog: AlertDialog, carItem: CarItem, carId : String){
         val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.Theme_AppCompat_Light_Dialog))
-        builder.setTitle("정비 내역 수정")
-        builder.setMessage("수정 페이지로 이동하시겠습니까?")
+        builder.setTitle(context.getString(R.string.dialog_modifyCar_title))
+        builder.setMessage(context.getString(R.string.dialog_modifyCar_confirm))
 
-        builder.setPositiveButton("확인") {dialog, id ->
+        builder.setPositiveButton(context.getString(R.string.dialog_ok)) {dialog, id ->
 
             val intent = Intent(context, ModifyCarActivity::class.java)
-            intent.putExtra("carItem", carItem)
-            intent.putExtra("carId", carId)
+            intent.putExtra(basicInfo.INTENT_CARITEM, carItem)
+            intent.putExtra(basicInfo.INTENT_CARID, carId)
             context.startActivity(intent)
 
             alertDialog.dismiss()
 
         }
-        builder.setNegativeButton("취소") {dialog, id ->
+        builder.setNegativeButton(context.getString(R.string.dialog_cancel)) {dialog, id ->
         }
         builder.show()
     }
 
-    fun carInfoDeleteDialog(context: Context, alertDialog: AlertDialog, carId : String){
+    fun carInfoDeleteDialog(context: Context, alertDialog: AlertDialog, carItem: CarItem, carId : String){
         val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.Theme_AppCompat_Light_Dialog))
-        builder.setTitle("정비 내역 삭제")
-        builder.setMessage("해당 정비 내역을 삭제하시겠습니까?")
+        builder.setTitle(context.getString(R.string.dialog_deleteCar_title))
+        builder.setMessage(context.getString(R.string.dialog_deleteCar_confirm))
 
-        builder.setPositiveButton("확인") {dialog, id ->
+        builder.setPositiveButton(context.getString(R.string.dialog_ok)) {dialog, id ->
             val firebaseDB = FirebaseDB()
-            firebaseDB.deleteCar_fireStore(context, carId)
+            firebaseDB.deleteCar_fireStore(context, carItem, carId)
             alertDialog.dismiss()
         }
-        builder.setNegativeButton("취소") {dialog, id ->
+        builder.setNegativeButton(context.getString(R.string.dialog_cancel)) {dialog, id ->
         }
         builder.show()
-    }
-
-    fun sendPostToFCM(tokenList: ArrayList<String>, msg: String){
-        val FCM_MESSAGE_URL = "https://fcm.googleapis.com/fcm/send"
-        val SERVER_KEY = "AAAABpOr5o4:APA91bFSytIo0kIjNyhZVjTC-RozXl_0QaOvSY2RqBzlzJhmHoSv4ceAstCM18uLbvJi23Tj82lIBXq-kzoaJyNsXqpfRMEHbvH8k5uu_hdX-GXJSg8LKE6euqxXSaXtzC-KEnCBIxmk"
-
-        for(list in tokenList){
-            try {
-                // FMC 메시지 생성 start
-                val root = JSONObject()
-                val notification = JSONObject()
-                //notification.put("body", message)
-                notification.put("title", msg)
-                root.put("notification", notification)
-                root.put("to", list)
-                // FMC 메시지 생성 end
-
-                val Url = URL(FCM_MESSAGE_URL)
-                val conn = Url.openConnection() as HttpURLConnection
-                conn.setRequestMethod("POST")
-                conn.setDoOutput(true)
-                conn.setDoInput(true)
-                conn.addRequestProperty("Authorization", "key=$SERVER_KEY")
-                conn.setRequestProperty("Accept", "application/json")
-                conn.setRequestProperty("Content-type", "application/json")
-                val os = conn.getOutputStream()
-                os.write(root.toString().toByteArray(charset("utf-8")))
-                os.flush()
-                conn.getResponseCode()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-
-        }
     }
 }
