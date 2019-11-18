@@ -32,12 +32,14 @@ class FirebaseDB {
                         if(firebaseFirestoreException != null){
                             return@addSnapshotListener
                         }
-                        var tokenList : ArrayList<String>? = null
+                        var tokenList : ArrayList<String>? = ArrayList()
                         for( token in querySnapshot!!){
                             tokenList?.add(token.get("value").toString())
                         }
 
-                        tokenList?.let { sendPostToFCM(tokenList!!, "${caritem.carNumber}이 추가되었습니다") }
+
+                        sendPostToFCM(tokenList!!, "${caritem.carNumber}이 추가되었습니다")
+
 
                     }
 
@@ -73,35 +75,38 @@ class FirebaseDB {
         val FCM_MESSAGE_URL = "https://fcm.googleapis.com/fcm/send"
         val SERVER_KEY = "AAAABpOr5o4:APA91bFSytIo0kIjNyhZVjTC-RozXl_0QaOvSY2RqBzlzJhmHoSv4ceAstCM18uLbvJi23Tj82lIBXq-kzoaJyNsXqpfRMEHbvH8k5uu_hdX-GXJSg8LKE6euqxXSaXtzC-KEnCBIxmk"
 
-        for(list in tokenList){
-            try {
-                // FMC 메시지 생성 start
-                val root = JSONObject()
-                val notification = JSONObject()
-                //notification.put("body", message)
-                notification.put("title", msg)
-                root.put("notification", notification)
-                root.put("to", list)
-                // FMC 메시지 생성 end
+        Thread(Runnable{
+            for(list in tokenList){
+                try {
+                    // FMC 메시지 생성 start
+                    val root = JSONObject()
+                    val notification = JSONObject()
+                    //notification.put("body", message)
+                    notification.put("title", msg)
+                    root.put("notification", notification)
+                    root.put("to", list)
+                    // FMC 메시지 생성 end
 
-                val Url = URL(FCM_MESSAGE_URL)
-                val conn = Url.openConnection() as HttpURLConnection
-                conn.setRequestMethod("POST")
-                conn.setDoOutput(true)
-                conn.setDoInput(true)
-                conn.addRequestProperty("Authorization", "key=$SERVER_KEY")
-                conn.setRequestProperty("Accept", "application/json")
-                conn.setRequestProperty("Content-type", "application/json")
-                val os = conn.getOutputStream()
-                os.write(root.toString().toByteArray(charset("utf-8")))
-                os.flush()
-                conn.getResponseCode()
-            } catch (e: Exception) {
-                e.printStackTrace()
-                Log.d("cccc", e.toString())
+                    val Url = URL(FCM_MESSAGE_URL)
+                    val conn = Url.openConnection() as HttpURLConnection
+                    conn.setRequestMethod("POST")
+                    conn.setDoOutput(true)
+                    conn.setDoInput(true)
+                    conn.addRequestProperty("Authorization", "key=$SERVER_KEY")
+                    conn.setRequestProperty("Accept", "application/json")
+                    conn.setRequestProperty("Content-type", "application/json")
+                    val os = conn.getOutputStream()
+                    os.write(root.toString().toByteArray(charset("utf-8")))
+                    os.flush()
+                    conn.getResponseCode()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Log.d("cccc", e.toString())
+                }
+
             }
+        }).start()
 
-        }
     }
 
 }
