@@ -24,6 +24,7 @@
         <activity android:name=".SettingActivity"></activity>
         <activity android:name="com.happylife.carmanagement.modifycar.ModifyCarActivity"></activity>
         <activity android:name=".search.search_do.SearchActivity"></activity>
+        <activity android:name=".WorkerNameActivity"></activity>
 
         <service
             android:name=".common.MyFirebaseMessagingService">

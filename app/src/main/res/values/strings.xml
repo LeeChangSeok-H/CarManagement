@@ -72,9 +72,9 @@
     <string name="firebaseDB_deleteCar_success">차량 삭제 성공</string>
     <string name="firebaseDB_deleteCar_fail">차량 삭제 실패</string>
 
-    <string name="FCM_addCar">차량이 추가 되었습니다.</string>
-    <string name="FCM_modifyCar">차량이 수정되었습니다.</string>
-    <string name="FCM_deleteCar">차량이 삭제되었습니다.</string>
+    <string name="FCM_addCar">차량을 추가하셨습니다.</string>
+    <string name="FCM_modifyCar">차량을 수정하셨습니다.</string>
+    <string name="FCM_deleteCar">차량을 삭제하셨습니다.</string>
 
     <string name="dialog_modifyCar_title">정비 내역 수정</string>
     <string name="dialog_modifyCar_confirm">수정 페이지로 이동하시겠습니까?</string>
@@ -83,5 +83,20 @@
     <string name="dialog_ok">확인</string>
     <string name="dialog_cancel">취소</string>
 
+    <string name="password_title">비밀번호 확인</string>
+    <string name="password_info">앱 설치 후 최초 한번만 확인하며 5회 이상 비밀번호 오류 시 앱 사용이 불가능하오니 정확히 입력해주시길 바랍니다.</string>
     <string name="password_wrong_over">비밀번호 오류 횟수를 초과했습니다. 앱 사용이 불가해집니다.</string>
+    <string name="password_hint">비밀번호를 입력해주세요</string>
+    <string name="password_ok">확인</string>
+
+    <string name="workerName_title">성명</string>
+    <string name="workerName_info">성명은 필수 항목이니 정확히 입력해주세요.</string>
+    <string name="workerName_hint">성명을 입력해주세요</string>
+    <string name="workerName_ok">확인</string>
+    <string name="workerName_wrongText">성명을 입력하셔야 합니다.</string>
+    <string name="workerName_changeComplete">이름 변경 완료</string>
+
+    <string name="setting_changeWorkerName">이름 변경</string>
+    <string name="setting_changeAppPassword">앱 비밀번호 변경</string>
+
 </resources>

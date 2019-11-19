@@ -35,8 +35,8 @@ class PasswordActivity : AppCompatActivity() {
         pref = this.getSharedPreferences(basicInfo.SHAREDPREFERENCES_NAME, 0)
         pref_editor = pref?.edit()
 
-        isConfirmPassword()
-        isConfirmCount()
+        confirmAlreadyPass()
+        passwordFailCount()
 
         m_et_password_input = et_password_input
         m_bt_password_ok = bt_password_ok
@@ -46,15 +46,15 @@ class PasswordActivity : AppCompatActivity() {
         getPassword_fireStore()
     }
 
-    fun isConfirmPassword(){
-        if(pref!!.getBoolean(basicInfo.SHAREDPREFERENCES_KEY_ISCONFIRM, false)){
+    fun confirmAlreadyPass(){
+        if(pref!!.getBoolean(basicInfo.SHAREDPREFERENCES_KEY_ISPASSWORDCONFIRM, false)){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
     }
 
-    fun isConfirmCount(){
+    fun passwordFailCount(){
         count = pref!!.getInt(basicInfo.SHAREDPREFERENCES_KEY_ISFAILCOUNT, 0)
         if(count == 5){
             m_bt_password_ok?.isClickable = false
@@ -75,20 +75,32 @@ class PasswordActivity : AppCompatActivity() {
 
     fun cofirmPassword(){
         if(db_password == m_et_password_input?.text.toString()){
-            pref_editor!!.putBoolean(basicInfo.SHAREDPREFERENCES_KEY_ISCONFIRM, true).apply()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            pref_editor!!.putBoolean(basicInfo.SHAREDPREFERENCES_KEY_ISPASSWORDCONFIRM, true).apply()
+            confirmWorkerName()
         }else{
             count++
             pref_editor!!.putInt(basicInfo.SHAREDPREFERENCES_KEY_ISFAILCOUNT, count)
             if(count != 5){
-                Toast.makeText(this, "${count}번 틀리셨습니다. ${5-count} 남았습니다.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "${count}번 틀리셨습니다. ${5-count}번 남았습니다.", Toast.LENGTH_LONG).show()
             }
             if(count == 5){
                 m_bt_password_ok?.isClickable = false
                 Toast.makeText(this, getString(R.string.password_wrong_over), Toast.LENGTH_LONG).show()
             }
+        }
+    }
+
+    fun confirmWorkerName(){
+        if(pref!!.getString(basicInfo.SHAREDPREFERENCES_KEY_ISNAMECONFIRM, "") == ""){
+            val intent = Intent(this, WorkerNameActivity::class.java)
+            intent.putExtra(basicInfo.INTENT_OPEN_WORKERNAME, basicInfo.OPENWORKERNAME_PASSWORD)
+            startActivity(intent)
+            finish()
+        }
+        else{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

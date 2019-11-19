@@ -1,10 +1,12 @@
 package com.happylife.carmanagement
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.happylife.carmanagement.common.BasicInfo
 import com.happylife.carmanagement.home.HomeFragment
 import com.happylife.carmanagement.search.search_home.SearchPagerFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,13 +19,20 @@ class MainActivity : AppCompatActivity() {
     var m_tv_main_toolbar_title : TextView? = null
     var m_ib_main_toolbar_setting : ImageButton? = null
 
+    val basicInfo = BasicInfo()
+
+    var pref : SharedPreferences? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        pref = this.getSharedPreferences(basicInfo.SHAREDPREFERENCES_NAME, 0)
+
         initView()
         bottomBarChangeListener()
         clickListener()
+
     }
 
     fun initView(){

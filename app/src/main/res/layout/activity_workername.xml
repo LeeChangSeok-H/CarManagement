@@ -3,45 +3,45 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tv_password_title"
+        android:id="@+id/tv_workerName_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tv_password_info"
+        android:layout_above="@+id/tv_workerName_info"
         android:layout_margin="20dp"
-        android:text="@string/password_title"
+        android:text="@string/workerName_title"
         android:textSize="40dp"
         android:textStyle="bold"
         android:textColor="@color/colorCustome_blue"/>
 
     <TextView
-        android:id="@+id/tv_password_info"
+        android:id="@+id/tv_workerName_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/rl_password"
+        android:layout_above="@+id/rl_workerName"
         android:layout_margin="20dp"
-        android:text="@string/password_info"
+        android:text="@string/workerName_info"
         android:textColor="@color/colorBlack"
         android:lineSpacingExtra="10dp"/>
 
     <RelativeLayout
-        android:id="@+id/rl_password"
+        android:id="@+id/rl_workerName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="20dp">
 
         <EditText
-            android:id="@+id/et_password_input"
+            android:id="@+id/et_workerName_input"
             style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/bt_password_ok"
+            android:layout_toLeftOf="@+id/bt_workerName_ok"
             android:ems="10"
-            android:hint="@string/password_hint"
-            android:inputType="textPassword" />
+            android:hint="@string/workerName_hint"
+            android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/bt_password_ok"
+            android:id="@+id/bt_workerName_ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

@@ -1,6 +1,7 @@
 package com.happylife.carmanagement.common
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
@@ -15,6 +16,7 @@ class FirebaseDB {
 
     val basicInfo = BasicInfo()
 
+    var pref : SharedPreferences? = null
     val db = FirebaseFirestore.getInstance()
 
     fun addCar_fireStore(context: Context, caritem : CarItem){
@@ -70,10 +72,13 @@ class FirebaseDB {
                     tokenList?.add(token.get(basicInfo.db_tokenValue).toString())
                 }
 
+                pref = context.getSharedPreferences(basicInfo.SHAREDPREFERENCES_NAME, 0)
+                val workerName = pref!!.getString(basicInfo.SHAREDPREFERENCES_KEY_ISNAMECONFIRM, "")
+
                 when(mode){
-                    basicInfo.ACTION_ADDCAR -> sendPostToFCM(tokenList!!, context.getString(R.string.FCM_addCar) ,"${caritem.date} : ${caritem.carNumber}")
-                    basicInfo.ACTION_MODIFYCAR -> sendPostToFCM(tokenList!!, context.getString(R.string.FCM_modifyCar) ,"${caritem.date} : ${caritem.carNumber}")
-                    basicInfo.ACTION_DELETECAR -> sendPostToFCM(tokenList!!, context.getString(R.string.FCM_deleteCar) ,"${caritem.date} : ${caritem.carNumber}")
+                    basicInfo.ACTION_ADDCAR -> sendPostToFCM(tokenList!!,  "${workerName}님이 ${context.getString(R.string.FCM_addCar)}" ,"${caritem.date} : ${caritem.carNumber}")
+                    basicInfo.ACTION_MODIFYCAR -> sendPostToFCM(tokenList!!, "${workerName}님이 ${context.getString(R.string.FCM_modifyCar)}" ,"${caritem.date} : ${caritem.carNumber}")
+                    basicInfo.ACTION_DELETECAR -> sendPostToFCM(tokenList!!, "${workerName}님이 ${context.getString(R.string.FCM_deleteCar)}" ,"${caritem.date} : ${caritem.carNumber}")
                 }
 
             }
