@@ -98,5 +98,7 @@
 
     <string name="setting_changeWorkerName">이름 변경</string>
     <string name="setting_changeAppPassword">앱 비밀번호 변경</string>
+    <string name="setting_changeAppPassword_success">앱 비밀번호 변경 완료</string>
+    <string name="setting_changeAppPassword_fail">앱 비밀번호 변경 실패</string>
 
 </resources>

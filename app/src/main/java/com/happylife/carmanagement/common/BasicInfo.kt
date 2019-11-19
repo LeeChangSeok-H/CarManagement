@@ -6,6 +6,7 @@ class BasicInfo {
     val db_carInfo = "carInfo"
     val db_password = "password"
     val db_pw_value = "pw_value"
+    val db_pw_admin = "pw_admin"
     val db_token ="token"
     val db_appToken = "appToken"
     val db_tokenValue = "value"

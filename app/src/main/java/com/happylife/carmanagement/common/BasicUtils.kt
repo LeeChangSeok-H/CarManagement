@@ -18,6 +18,7 @@ import java.net.URL
 class BasicUtils {
 
     val basicInfo = BasicInfo()
+    val firebaseDB = FirebaseDB()
 
     public fun carInfoDialog(context: Context, carItem: CarItem, carId : String){
         val mDialogView = LayoutInflater.from(context).inflate(R.layout.dialog_confirmcar, null)
@@ -74,7 +75,7 @@ class BasicUtils {
         builder.setMessage(context.getString(R.string.dialog_deleteCar_confirm))
 
         builder.setPositiveButton(context.getString(R.string.dialog_ok)) {dialog, id ->
-            val firebaseDB = FirebaseDB()
+
             firebaseDB.deleteCar_fireStore(context, carItem, carId)
             alertDialog.dismiss()
         }

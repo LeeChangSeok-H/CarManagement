@@ -122,4 +122,15 @@ class FirebaseDB {
 
     }
 
+    fun modifyPassword_fireStore(context: Context, newPw : String){
+        val data = hashMapOf("pw_value" to newPw)
+        db.collection(basicInfo.db_ourStore)
+            .document(basicInfo.db_password)
+            .set(data, SetOptions.merge())
+            .addOnSuccessListener { documentReference ->
+                Toast.makeText(context, R.string.setting_changeAppPassword_success, Toast.LENGTH_LONG).show()
+            }
+            .addOnFailureListener { e -> Toast.makeText(context, R.string.setting_changeAppPassword_fail, Toast.LENGTH_LONG).show()}
+    }
+
 }

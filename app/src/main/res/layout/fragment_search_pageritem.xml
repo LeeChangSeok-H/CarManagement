@@ -17,9 +17,7 @@
             android:id="@+id/iv_search_pagerItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@android:drawable/btn_dialog" />
-
+            android:layout_centerInParent="true" />
             -->
 
         <TextView

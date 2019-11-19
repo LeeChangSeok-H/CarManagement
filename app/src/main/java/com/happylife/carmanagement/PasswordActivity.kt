@@ -35,7 +35,6 @@ class PasswordActivity : AppCompatActivity() {
         pref = this.getSharedPreferences(basicInfo.SHAREDPREFERENCES_NAME, 0)
         pref_editor = pref?.edit()
 
-        confirmAlreadyPass()
         passwordFailCount()
 
         m_et_password_input = et_password_input
@@ -47,7 +46,7 @@ class PasswordActivity : AppCompatActivity() {
     }
 
     fun confirmAlreadyPass(){
-        if(pref!!.getBoolean(basicInfo.SHAREDPREFERENCES_KEY_ISPASSWORDCONFIRM, false)){
+        if(pref!!.getString(basicInfo.SHAREDPREFERENCES_KEY_ISPASSWORDCONFIRM, "") == db_password){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -68,6 +67,7 @@ class PasswordActivity : AppCompatActivity() {
             .addOnSuccessListener { documentSnapshot ->
                 if(documentSnapshot != null) {
                     db_password = documentSnapshot.get(basicInfo.db_pw_value).toString()
+                    confirmAlreadyPass()
                     m_bt_password_ok?.isClickable = true
                 }
             }
@@ -75,7 +75,7 @@ class PasswordActivity : AppCompatActivity() {
 
     fun cofirmPassword(){
         if(db_password == m_et_password_input?.text.toString()){
-            pref_editor!!.putBoolean(basicInfo.SHAREDPREFERENCES_KEY_ISPASSWORDCONFIRM, true).apply()
+            pref_editor!!.putString(basicInfo.SHAREDPREFERENCES_KEY_ISPASSWORDCONFIRM, db_password).apply()
             confirmWorkerName()
         }else{
             count++
