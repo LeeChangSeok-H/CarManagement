@@ -15,9 +15,18 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs{
+        release{
+            storeFile file('key_carmanagement.jks') // 기준은 App 폴더 기준이다.
+            storePassword "lcs940213!"
+            keyAlias "key_carmanagement"
+            keyPassword "lcs940213!"
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -36,6 +45,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.gauravk.bubblenavigation:bubblenavigation:1.0.7'
     implementation 'com.afollestad:viewpagerdots:1.0.0'
+    implementation 'com.airbnb.android:lottie:3.2.2'
 
     implementation 'com.google.firebase:firebase-analytics:17.2.0'
     implementation 'com.google.firebase:firebase-firestore:20.2.0'

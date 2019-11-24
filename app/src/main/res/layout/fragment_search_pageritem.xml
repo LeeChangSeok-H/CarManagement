@@ -12,21 +12,19 @@
         android:id="@+id/rl_search_viewPager"
         android:layout_centerInParent="true">
 
-        <!--
         <ImageView
             android:id="@+id/iv_search_pagerItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true" />
-            -->
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/tv_search_pagerItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_below="@+id/iv_search_pagerItem"
             android:layout_margin="20dp"
-            android:text="TextView"
             android:textColor="@color/colorWhite"
             android:textSize="30dp"
             android:textStyle="bold"/>

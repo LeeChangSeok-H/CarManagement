@@ -22,7 +22,7 @@ class PasswordActivity : AppCompatActivity() {
     val db_firestore = FirebaseFirestore.getInstance()
     val basicInfo = BasicInfo()
 
-    var db_password : String? = null
+    var db_password : String? = ""
 
     var pref : SharedPreferences? = null
     var pref_editor : SharedPreferences.Editor? = null
@@ -35,6 +35,8 @@ class PasswordActivity : AppCompatActivity() {
         pref = this.getSharedPreferences(basicInfo.SHAREDPREFERENCES_NAME, 0)
         pref_editor = pref?.edit()
 
+        db_password = intent.getStringExtra(basicInfo.INTENT_PASSWORD)
+
         passwordFailCount()
 
         m_et_password_input = et_password_input
@@ -42,15 +44,6 @@ class PasswordActivity : AppCompatActivity() {
 
         m_bt_password_ok?.setOnClickListener { cofirmPassword() }
 
-        getPassword_fireStore()
-    }
-
-    fun confirmAlreadyPass(){
-        if(pref!!.getString(basicInfo.SHAREDPREFERENCES_KEY_ISPASSWORDCONFIRM, "") == db_password){
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
     }
 
     fun passwordFailCount(){
@@ -58,19 +51,6 @@ class PasswordActivity : AppCompatActivity() {
         if(count == 5){
             m_bt_password_ok?.isClickable = false
         }
-    }
-
-    fun getPassword_fireStore(){
-        db_firestore.collection(basicInfo.db_ourStore)
-            .document(basicInfo.db_password)
-            .get()
-            .addOnSuccessListener { documentSnapshot ->
-                if(documentSnapshot != null) {
-                    db_password = documentSnapshot.get(basicInfo.db_pw_value).toString()
-                    confirmAlreadyPass()
-                    m_bt_password_ok?.isClickable = true
-                }
-            }
     }
 
     fun cofirmPassword(){

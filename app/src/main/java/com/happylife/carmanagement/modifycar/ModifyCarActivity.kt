@@ -28,6 +28,7 @@ class ModifyCarActivity : AppCompatActivity() {
     var m_ib_addCar_toolbar_close : ImageButton? = null
     var m_bt_add_changeDate : Button? = null
     var m_bt_add_changeTime : Button? = null
+    var m_tv_addCar_toolbar_title : TextView? = null
 
     val calendar = Calendar.getInstance()
 
@@ -59,6 +60,7 @@ class ModifyCarActivity : AppCompatActivity() {
     }
 
     fun initView(){
+        m_tv_addCar_toolbar_title = tv_addCar_toolbar_title
         m_tv_add_date = tv_add_date
         m_tv_add_time = tv_add_time
         m_et_add_company = et_add_company
@@ -76,6 +78,7 @@ class ModifyCarActivity : AppCompatActivity() {
         carItem = intent.getParcelableExtra<CarItem>(basicInfo.INTENT_CARITEM)
         carId = intent.getStringExtra(basicInfo.INTENT_CARID)
 
+        m_tv_addCar_toolbar_title?.text = getString(R.string.title_modifyCar)
         m_tv_add_date?.text = carItem?.date
         m_tv_add_time?.text = carItem?.time
         m_et_add_company?.setText(carItem?.companyName)

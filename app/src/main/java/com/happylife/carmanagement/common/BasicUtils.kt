@@ -30,7 +30,7 @@ class BasicUtils {
         mAlertDialog.window!!.setBackgroundDrawableResource(android.R.color.transparent)
 
         mDialogView.tv_confirmCar_carNumber.text = carItem.carNumber
-        mDialogView.tv_confirmCar_Date_time.text = carItem.date + " " + carItem.time
+        mDialogView.tv_confirmCar_Date_time.text = carItem.date + ", " + carItem.time
         mDialogView.tv_confirmCar_companyName.setText(carItem.companyName)
         mDialogView.tv_confirmCar_customerPhoneNumber.setText(carItem.customerPhoneNumber)
         mDialogView.tv_confirmCar_carType.setText(carItem.carType)
@@ -50,7 +50,7 @@ class BasicUtils {
     }
 
     fun carInfoModifyDiaglog(context: Context, alertDialog: AlertDialog, carItem: CarItem, carId : String){
-        val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.Theme_AppCompat_Light_Dialog))
+        val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.AlertDialogTheme))
         builder.setTitle(context.getString(R.string.dialog_modifyCar_title))
         builder.setMessage(context.getString(R.string.dialog_modifyCar_confirm))
 
@@ -70,7 +70,7 @@ class BasicUtils {
     }
 
     fun carInfoDeleteDialog(context: Context, alertDialog: AlertDialog, carItem: CarItem, carId : String){
-        val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.Theme_AppCompat_Light_Dialog))
+        val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.AlertDialogTheme))
         builder.setTitle(context.getString(R.string.dialog_deleteCar_title))
         builder.setMessage(context.getString(R.string.dialog_deleteCar_confirm))
 

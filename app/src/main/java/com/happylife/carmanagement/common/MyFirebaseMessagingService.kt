@@ -52,7 +52,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             val notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
             var notificationBuilder = NotificationCompat.Builder(this,"Notification")
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.mipmap.ic_launcher_car2_round)
                 .setContentTitle("Push Notification FCM")
                 .setContentText(body)
                 .setAutoCancel(true)
@@ -60,7 +60,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 .setContentIntent(pendingIntent)
 
             var notificationManager: NotificationManager = this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.notify(0, notificationBuilder.build())
+            //notificationManager.notify(0, notificationBuilder.build())
         }
 
 }

@@ -14,11 +14,13 @@ class BasicInfo {
     val db_time = "time"
     val db_carNumber = "carNumber"
     val db_customerPhoneNumber = "customerPhoneNumber"
+    val db_serverKey = "serverKey"
 
     val SHAREDPREFERENCES_NAME = "carManagement"
     val SHAREDPREFERENCES_KEY_ISPASSWORDCONFIRM = "isPasswordConfirm"
     val SHAREDPREFERENCES_KEY_ISFAILCOUNT = "isFailCount"
     val SHAREDPREFERENCES_KEY_ISNAMECONFIRM = "isNameConfirm"
+    val SHAREDPREFERENCES_KEY_SERVERKEY = "SERVERKEY"
 
     val datePattern = "yyyy - MM - dd"
     val timePattern = "HH : mm"
@@ -27,6 +29,7 @@ class BasicInfo {
     val INTENT_CARITEM = "carItem"
     val INTENT_CARID = "carId"
     val INTENT_OPEN_WORKERNAME = "openWorkerName"
+    val INTENT_PASSWORD = "PASSWORD"
 
     val OPENWORKERNAME_PASSWORD = 100
     val OPENWORKERNAME_SETTING = 200

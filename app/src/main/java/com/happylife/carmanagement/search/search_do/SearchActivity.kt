@@ -59,7 +59,7 @@ class SearchActivity : AppCompatActivity() {
         m_progress = progressBar_search
         m_tv_search_noData = tv_search_noData
 
-        m_rv_searchlist?.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+       // m_rv_searchlist?.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
 
         m_rv_searchlist?.adapter = SearchRvAdapter(searchList){
                 carItem , position -> basicUtils.carInfoDialog(this, carItem, searchList_id[position])
@@ -111,7 +111,9 @@ class SearchActivity : AppCompatActivity() {
                             }
 
                             m_rv_searchlist?.adapter!!.notifyDataSetChanged()
-                            m_tv_search_noData?.visibility = View.GONE
+                            if(searchList.size != 0){
+                                m_tv_search_noData?.visibility = View.GONE
+                            }
                             m_progress?.visibility = View.GONE
                             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                         }
@@ -140,7 +142,9 @@ class SearchActivity : AppCompatActivity() {
 
                             m_rv_searchlist?.adapter!!.notifyDataSetChanged()
 
-                            m_tv_search_noData?.visibility = View.GONE
+                            if(searchList.size != 0){
+                                m_tv_search_noData?.visibility = View.GONE
+                            }
                             m_progress?.visibility = View.GONE
                             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                         }

@@ -7,4 +7,8 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorCustome_blue">#5656ff</color>
     <color name="colorGray">#8C8C8C</color>
+
+    <color name="color_search_car">#6799FF</color>
+    <color name="color_search_phone">#A566FF</color>
+    <color name="color_mainListBorder">#EAEAEA</color>
 </resources>

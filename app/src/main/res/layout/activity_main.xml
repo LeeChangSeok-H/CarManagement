@@ -64,10 +64,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:bt_active="true"
-            app:bt_colorActive="@color/colorWhite"
+            app:bt_colorActive="@color/colorCustome_blue"
             app:bt_colorInactive="@color/colorBlack"
             app:bt_icon="@drawable/home"
-            app:bt_shape="@color/colorCustome_blue"
+            app:bt_shape="@color/colorWhite"
             app:bt_title="@string/main_bottomBar_home"
             />
 
@@ -76,10 +76,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:bt_active="true"
-            app:bt_colorActive="@color/colorWhite"
+            app:bt_colorActive="@color/colorCustome_blue"
             app:bt_colorInactive="@color/colorBlack"
             app:bt_icon="@drawable/search"
-            app:bt_shape="@color/colorCustome_blue"
+            app:bt_shape="@color/colorWhite"
             app:bt_title="@string/main_bottomBar_search"
             />
 

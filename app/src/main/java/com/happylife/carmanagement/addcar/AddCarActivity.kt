@@ -3,6 +3,8 @@ package com.happylife.carmanagement.addcar
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.happylife.carmanagement.R
@@ -12,6 +14,8 @@ import com.happylife.carmanagement.home.CarItem
 import kotlinx.android.synthetic.main.activity_addcar.*
 import java.text.SimpleDateFormat
 import java.util.*
+
+
 
 class AddCarActivity : AppCompatActivity() {
 
@@ -101,7 +105,7 @@ class AddCarActivity : AppCompatActivity() {
             }
         }
 
-        m_bt_add_changeDate?.setOnClickListener { DatePickerDialog(this,
+        m_bt_add_changeDate?.setOnClickListener { DatePickerDialog(this,R.style.DatePickerDialog,
             dateSetListener,
             // set DatePickerDialog to point to today's date when it loads up
             calendar.get(Calendar.YEAR),
@@ -111,7 +115,7 @@ class AddCarActivity : AppCompatActivity() {
 
     fun timeChangeProcess(){
 
-        val tpd = TimePickerDialog(this,TimePickerDialog.OnTimeSetListener(function = { view, h, m ->
+        val tpd = TimePickerDialog(this,R.style.TimePickerDialog, TimePickerDialog.OnTimeSetListener(function = { view, h, m ->
             calendar.set(Calendar.HOUR_OF_DAY, h)
             calendar.set(Calendar.MINUTE, m)
             updateTimeView()

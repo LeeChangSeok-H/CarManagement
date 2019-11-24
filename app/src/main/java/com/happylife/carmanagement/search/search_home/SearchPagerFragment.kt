@@ -31,16 +31,16 @@ class SearchPagerFragment : Fragment()  {
 
         pagerList.add(
             SearchPagerItem(
-                R.drawable.common_google_signin_btn_icon_dark,
+                R.drawable.car_search,
                 getString(R.string.search_pagerName_carNumber),
-                R.color.colorBlack
+                context?.getDrawable(R.drawable.search_car_background)
             )
         )
         pagerList.add(
             SearchPagerItem(
-                R.drawable.common_google_signin_btn_icon_light,
+                R.drawable.phone_search,
                 getString(R.string.search_pagerName_phoneNumber),
-                R.color.colorCustome_blue
+                context?.getDrawable(R.drawable.search_phone_background)
             )
         )
 

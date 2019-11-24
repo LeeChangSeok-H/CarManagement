@@ -83,7 +83,8 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/tv_add_date"
                     android:background="@drawable/black_round_rectangle_stroke"
-                    android:text="@string/add_changeDate" />
+                    android:text="@string/add_changeDate"
+                    android:textStyle="bold"/>
 
 
             </RelativeLayout>
@@ -122,7 +123,8 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/tv_add_time"
                     android:background="@drawable/black_round_rectangle_stroke"
-                    android:text="@string/add_changeTime" />
+                    android:text="@string/add_changeTime"
+                    android:textStyle="bold"/>
             </RelativeLayout>
 
             <LinearLayout
@@ -175,7 +177,7 @@
                     android:background="@drawable/black_round_rectangle_stroke"
                     android:ems="10"
                     android:hint="@string/add_customerPhoneNumber_hint"
-                    android:inputType="textPersonName"
+                    android:inputType="phone"
                     android:padding="10dp" />
             </LinearLayout>
 
@@ -256,7 +258,7 @@
                     android:background="@drawable/black_round_rectangle_stroke"
                     android:ems="10"
                     android:hint="@string/add_distanceDriven_hint"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:padding="10dp" />
             </LinearLayout>
 
@@ -283,7 +285,8 @@
                     android:background="@drawable/black_round_rectangle_stroke"
                     android:ems="10"
                     android:hint="@string/add_workList_hint"
-                    android:inputType="textPersonName"
+                    android:singleLine="false"
+                    android:scrollbars="vertical"
                     android:padding="10dp" />
             </LinearLayout>
 
@@ -310,7 +313,8 @@
                     android:background="@drawable/black_round_rectangle_stroke"
                     android:ems="10"
                     android:hint="@string/add_etc_hint"
-                    android:lines="4"
+                    android:singleLine="false"
+                    android:scrollbars="vertical"
                     android:padding="10dp" />
             </LinearLayout>
 

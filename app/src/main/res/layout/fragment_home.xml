@@ -49,15 +49,32 @@
         app:backgroundTint="@color/colorCustome_blue"
         app:srcCompat="@drawable/plus" />
 
-    <TextView
-        android:id="@+id/tv_home_noData"
+
+
+    <RelativeLayout
+        android:id="@+id/rl_home_noData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:visibility="gone"
-        android:text="@string/home_noData_info"
-        android:textColor="@color/colorBlack"
-        android:textSize="20dp"/>
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_home_noData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            app:srcCompat="@drawable/car2" />
+
+        <TextView
+            android:id="@+id/tv_home_noData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_home_noData"
+            android:text="@string/home_noData_info"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp"/>
+    </RelativeLayout>
 
 
 </RelativeLayout>

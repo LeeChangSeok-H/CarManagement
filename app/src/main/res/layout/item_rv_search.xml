@@ -3,21 +3,37 @@
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:elevation="8dp">
 
-    <TextView
-        android:id="@+id/tv_item_rv_search_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorCustome_blue"
-        android:gravity="center"
-        android:text="2019-10-19"
-        android:textSize="20dp"
-        android:textColor="@color/colorWhite"/>
+    <RelativeLayout
+        android:id="@+id/rl_item_rv_search_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_item_rv_search_date_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="o" />
+
+        <TextView
+            android:id="@+id/tv_item_rv_search_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_item_rv_search_date_divider"
+            android:layout_centerVertical="true"
+            android:text="2019-10-19"
+            android:textColor="@color/colorCustome_blue"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_item_rv_search_date"
-        android:layout_margin="10dp">
+        android:layout_below="@+id/rl_item_rv_search_date"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp">
 
         <TextView
             android:id="@+id/tv_item_rv_search_time"
@@ -25,8 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="19:00"
-            android:textColor="@color/colorBlack"
-            android:textSize="30dp"/>
+            android:textColor="@color/colorGray"
+            android:textSize="20dp"/>
 
         <TextView
             android:id="@+id/tv_item_rv_search_carNumber"
@@ -36,7 +52,7 @@
             android:layout_marginLeft="20dp"
             android:text="19부9225"
             android:textColor="@color/colorBlack"
-            android:textSize="40dp"
+            android:textSize="30dp"
             android:textStyle="bold" />
 
     </RelativeLayout>

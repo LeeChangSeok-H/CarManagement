@@ -3,6 +3,7 @@ package com.happylife.carmanagement
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.ContextThemeWrapper
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
@@ -65,7 +66,7 @@ class SettingActivity : AppCompatActivity() {
     }
 
     fun changeAppPassword(){
-        val builder = AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AlertDialogTheme))
         val dialogView = layoutInflater.inflate(R.layout.dialog_base_edittext, null)
         val dialogTextView = dialogView.tv_dialog_base_editText_title
         val dialogEditText = dialogView.et_dialog_base_editText_pw
@@ -90,7 +91,7 @@ class SettingActivity : AppCompatActivity() {
             .addOnSuccessListener { documentSnapshot ->
                 if(documentSnapshot != null) {
                     if(inputPw == documentSnapshot.get(basicInfo.db_pw_admin).toString()){
-                        val builder = AlertDialog.Builder(this)
+                        val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AlertDialogTheme))
                         val dialogView = layoutInflater.inflate(R.layout.dialog_base_edittext, null)
                         val dialogTextView = dialogView.tv_dialog_base_editText_title
                         val dialogEditText = dialogView.et_dialog_base_editText_pw

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/tv_workerName_title"
@@ -32,13 +34,13 @@
 
         <EditText
             android:id="@+id/et_workerName_input"
-            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/bt_workerName_ok"
             android:ems="10"
             android:hint="@string/workerName_hint"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            app:theme="@style/EditTextStyle"/>
 
         <Button
             android:id="@+id/bt_workerName_ok"
